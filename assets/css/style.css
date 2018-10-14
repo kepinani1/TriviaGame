@@ -1,0 +1,26 @@
+header {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: yellowgreen;
+    background: purple;
+    height: 60px;
+    font-size: 30pt;
+    text-align: center;
+    padding-top:20px;
+}
+.section {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background:hotpink;
+    color: black;
+    padding-top: 2pc;
+    padding-bottom: 1pc;
+    margin-left: 200px;
+    width: 900px;
+    height: 450px;
+    font-size: 14pt;
+    text-align: center;
+    align-content:center;
+}
+#timer, #questionsArea, #form, #finalPage, h2{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: black;
+}
