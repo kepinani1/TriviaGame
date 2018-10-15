@@ -5,8 +5,7 @@ var gameSet = {
       $("#timer").text("Time remaining: " + gameSet.timeRemaining);
       setInterval(gameSet.countdown, 1000);
       $(".start-page").hide();
-      $(".second-page").display();
-      triviaGame.showQuestions();
+      $(".container").show(triviaGame.showQuestions);
     },
     //As the timer counts down, and becomes 0, the timer will stop.
     countdown: function() {
@@ -36,14 +35,14 @@ var gameSet = {
   //variable triviaGame is defined here in which upon being activated, a header, form with questions, and answers will appear. Anwer choices will have radio capability, and checker user input storage.Questions will be taken from an array, and user answers will be appended.
   var triviaGame = {
     showQuestions: function() {
-      var divSection = $("#questionsArea", "#form");
-      divSection.append(
+      var divContainer = $(".container", "#questionsArea","#form");
+      divContainer.append(
         "<h2>Take the challenge, and answer the following questions:</h2>"
       );
       //for loop takes questions from the gameQuestions array and displays them on the screen.
       for (var i = 0; i < gameQuestions.length; i++) {
-        divSection.append(
-          '<div id="question">' + gameQuestions[i].question + "</div>"
+        divContainer.append(
+          '<div id="questionsArea">' + gameQuestions[i].question + "</div>"
         );
   
         var answer1 = gameQuestions[i].answers[0];
@@ -51,8 +50,8 @@ var gameSet = {
         var answer3 = gameQuestions[i].answers[2];
         var answer4 = gameQuestions[i].answers[3];
   
-        divSection.append(
-          '<div class="form" type="radio" name="radio-group' +
+        divContainer.append(
+          '<div id="form" type="radio" name="radio-group' +
             i +
             '" id="radio' +
             i +
@@ -64,8 +63,8 @@ var gameSet = {
             answer1 +
             "</label></div>"
         );
-        divSection.append(
-          '<div class="form" type="radio" name="radio-group' +
+        divContainer.append(
+          '<div id="form" type="radio" name="radio-group' +
             i +
             '" id="radio' +
             i +
@@ -77,8 +76,8 @@ var gameSet = {
             answer2 +
             "</label></div>"
         );
-        divSection.append(
-          '<div class="form" type="radio" name="radio-group' +
+        divContainer.append(
+          '<div id="form" type="radio" name="radio-group' +
             i +
             '" id="radio' +
             i +
@@ -90,8 +89,8 @@ var gameSet = {
             answer3 +
             "</label></div>"
         );
-        divSection.append(
-          '<div class="form" type="radio" name="radio-group' +
+        divContainer.append(
+          '<div id="form" type="radio" name="radio-group' +
             i +
             '" id="radio' +
             i +
@@ -106,8 +105,8 @@ var gameSet = {
       }
       //A done button will appear in which user can submit answers at the very end and the timer stops.
       var doneButton =
-        '<button class="btn btn-primary" id="done-button" type="submit">Done</button>';
-      divSection.append(doneButton);
+        '<button id="btn btn-primary" id="done-button" type="submit">Done</button>';
+      divContainer.append(doneButton);
       $("#done-button").on("click", gameSet.stopTimer);
     },
 //Answer checker will compile the number of correct, incorrect, and unanswered according to what the user inputted (checked off) versus what was the correct answer according to the array gameQuestions.
@@ -170,7 +169,10 @@ var gameSet = {
     },
     {
       question: "Right Thurr-- is a hit single for what artist?",
-      answers: ["Chingy", "Kanye West", "Ludacris", "TI, he was around then...."],
+      answers: ["Chingy", 
+      "Kanye West", 
+      "Ludacris", 
+      "TI, he was around then...."],
       correct: "Chingy"
     },
     {
@@ -195,22 +197,26 @@ var gameSet = {
     },
     {
       question: "What famous couple split in 2002?",
-      answers: [
-        "Britney Spears and Justin Timberlake",
-        "Nick Lachey and Jessica Simpson",
-        "Jennifer Lopez and Puff Daddy",
-        "Who cares? You think I followed celeb couples back then."
-      ],
+      answers: ["Britney Spears and Justin Timberlake",
+      "Nick Lachey and Jessica Simpson",
+      "Jennifer Lopez and Puff Daddy",
+      "Who cares? You think I followed celeb couples back then."],
       correct: "Britney Spears and Justin Timberlake"
     },
     {
       question: "Who was featured on Jojo's 'Baby It's You?'",
-      answers: ["Cee lo Green", "Eminem", "Bow wow", "Nick Cannon"],
+      answers: ["Cee lo Green", 
+      "Eminem", 
+      "Bow wow", 
+      "Nick Cannon"],
       correct: "Bow Wow"
     },
     {
       question: "Who sang the hits 'Foolish' and 'Happy'?",
-      answers: ["Aaliyah", "Ashanti", "Mariah Carey", "Paula Abdul"],
+      answers: ["Aaliyah", 
+      "Ashanti", 
+      "Mariah Carey", 
+      "Paula Abdul"],
       correct: "Ashanti"
     },
     {
@@ -228,5 +234,6 @@ var gameSet = {
   
   $(document).ready(function() {
     $("#startButton").on("click", gameSet.startTimer);
-    triviaGames.render();
+    divContainer.render();
+    $(".container").render();
   });

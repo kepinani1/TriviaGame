@@ -8,9 +8,7 @@
     <title>2000s Hit Music Trivia Game</title>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
-
 <body>
-
     <body background="https://i.ticketweb.com/i/00/07/55/96/99_Edp.jpg?v=11">
         <div id="header">
         </div>
@@ -29,19 +27,22 @@
                         <button type="button" id="startButton">Start</button>
                     </div>
                 </div>
-                <h4 id="timer"></h4>
-                <div id="questionsArea">
-                    <div id="form">
+                <div class="container">
+                    <div id="timer">
+                        <div id="questionsArea">
+                            <div id="form">
+                                    <button type="button" id="doneButton">Done</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="hidden" id="finalPage">
-            <h2>Here are your scores:</h2>
-            <p id="rightAnswers"></p>
-            <p id="wrongAnswers"></p>
-            <p id="leftBlank"></p>
-        </div>
+            <div class="hidden" id="finalPage">
+                <h2>Here are your scores:</h2>
+                <p id="rightAnswers"></p>
+                <p id="wrongAnswers"></p>
+                <p id="leftBlank"></p>
+            </div>
         </div>
         </div>
         </div>
@@ -49,5 +50,4 @@
     </body>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
     <script src="assets/javascript/app.js"></script>
-
 </html>
