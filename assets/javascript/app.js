@@ -1,3 +1,4 @@
+//Array of questions and answers to be pulled and displayed on the screen. True answers are the right answer, and false answers are the wrong answer.
 var questions = [
   {
     question:
@@ -92,7 +93,7 @@ var questions = [
     ]
   },
 ];
-// Global variables
+//Similar to the crystals game, we set the game at zero for answers right, wrong, and blank. The timer is set at 30, and will count down.
 var game;
 var counter = 0;
 var clock;
@@ -168,7 +169,7 @@ function beginGame() {
   $('.timer').html('<p>Time remaining: <span class="time">30</span></p>');
 
   $('.question').html(questions[counter].question);
-  var showingAnswers =
+  var displayAnswers =
     '<p class="answer first-answer">' +
     questions[counter].answers[0].answer +
     '</p><p class="answer">' +
@@ -179,9 +180,9 @@ function beginGame() {
     questions[counter].answers[3].answer +
     '</p>';
 
-  $('.answers').html(showingAnswers);
+  $('.answers').html(displaygAnswers);
 
-  timerHolder();
+  timerHeld();
 }
 
 function questionCounter() {
@@ -189,14 +190,14 @@ function questionCounter() {
     counter++;
     beginGame();
     timer = 30;
-    timerHolder();
+    timerHeld();
   } else {
     endGame();
   }
 }
 
 // Timer function
-function timerHolder() {
+function timerHeld() {
   clearInterval(clock);
   clock = setInterval(seconds, 1000);
   function seconds() {
@@ -212,12 +213,12 @@ function timerHolder() {
 
 // Finishing the game. There will be a display of right answers, wrong answers, and blank answers chosen count. These are all inner html items that will be appended to the screen.
 function endGame() {
-  var final = $('.main')
+  var lastPage = $('.main')
     .html("<p>Here are your results!<p><br><br>")
     .append('<p>Correct Answers: ' + rightCounter + '</p><br>')
     .append('<p>Incorrect Answers: ' + wrongCounter + '</p>');
-  $(final).attr('<div>');
-  $(final).attr('class', 'final');
+  $(lastPage).attr('<div>');
+  $(lastPage).attr('class', 'final');
   $('.final').append('<p><a class="btn btn-primary btn-lg reset-button" href="#">Restart the game!</a></p>');
   $('.questions-page').css('display', 'none');
   $('.answers').css('display', 'none');
@@ -231,5 +232,5 @@ function resetGame() {
   blankCounter = 0;
   timer = 30;
   beginGame();
-  timerHolder();
+  timerHeld();
 }
