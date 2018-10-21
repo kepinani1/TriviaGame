@@ -93,7 +93,7 @@ var questions = [
     ]
   },
 ];
-//Similar to the crystals game, we set the game at zero for answers right, wrong, and blank. The timer is set at 30, and will count down.
+// Global variables
 var game;
 var counter = 0;
 var clock;
@@ -169,7 +169,7 @@ function beginGame() {
   $('.timer').html('<p>Time remaining: <span class="time">30</span></p>');
 
   $('.question').html(questions[counter].question);
-  var displayAnswers =
+  var showingAnswers =
     '<p class="answer first-answer">' +
     questions[counter].answers[0].answer +
     '</p><p class="answer">' +
@@ -180,9 +180,9 @@ function beginGame() {
     questions[counter].answers[3].answer +
     '</p>';
 
-  $('.answers').html(displaygAnswers);
+  $('.answers').html(showingAnswers);
 
-  timerHeld();
+  timerHolder();
 }
 
 function questionCounter() {
@@ -190,14 +190,14 @@ function questionCounter() {
     counter++;
     beginGame();
     timer = 30;
-    timerHeld();
+    timerHolder();
   } else {
     endGame();
   }
 }
 
 // Timer function
-function timerHeld() {
+function timerHolder() {
   clearInterval(clock);
   clock = setInterval(seconds, 1000);
   function seconds() {
@@ -213,12 +213,12 @@ function timerHeld() {
 
 // Finishing the game. There will be a display of right answers, wrong answers, and blank answers chosen count. These are all inner html items that will be appended to the screen.
 function endGame() {
-  var lastPage = $('.main')
+  var final = $('.main')
     .html("<p>Here are your results!<p><br><br>")
     .append('<p>Correct Answers: ' + rightCounter + '</p><br>')
     .append('<p>Incorrect Answers: ' + wrongCounter + '</p>');
-  $(lastPage).attr('<div>');
-  $(lastPage).attr('class', 'final');
+  $(final).attr('<div>');
+  $(final).attr('class', 'final');
   $('.final').append('<p><a class="btn btn-primary btn-lg reset-button" href="#">Restart the game!</a></p>');
   $('.questions-page').css('display', 'none');
   $('.answers').css('display', 'none');
@@ -232,5 +232,5 @@ function resetGame() {
   blankCounter = 0;
   timer = 30;
   beginGame();
-  timerHeld();
+  timerHolder();
 }
